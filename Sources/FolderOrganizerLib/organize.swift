@@ -11,7 +11,6 @@ import ArgumentParser
 
 
 
-
     public struct Organize: ParsableCommand {
         public static var configuration: CommandConfiguration {
             .init(
@@ -25,6 +24,9 @@ import ArgumentParser
         
         public init() {}
         
+        func createConfig(){
+            
+        }
         
         func loadJSON(filename: String, path: URL) throws -> [String:Array<String>]? {
             let fullpath = path.appendingPathComponent(filename)
@@ -34,6 +36,7 @@ import ArgumentParser
         }
         
         public func run() throws {
+            try createConfigJSON()
             
             let fmananger = FileManager.default
             let commonpath = fmananger.homeDirectoryForCurrentUser

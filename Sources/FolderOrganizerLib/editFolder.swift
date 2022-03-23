@@ -34,6 +34,7 @@ import ArgumentParser
         }
         
         public func run() throws {
+            try createConfigJSON()
             
             let fmanager = FileManager.default
             let homeURL = fmanager.homeDirectoryForCurrentUser

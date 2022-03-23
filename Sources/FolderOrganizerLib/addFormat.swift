@@ -33,6 +33,7 @@ import ArgumentParser
         }
         
         public func run() throws {
+            try createConfigJSON()
             
             let fmananger = FileManager.default
             let configURL = fmananger.homeDirectoryForCurrentUser.appendingPathComponent("Documents/.FolderOrganizer")
