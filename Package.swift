@@ -8,7 +8,7 @@ let package = Package(
     platforms: [.macOS(.v10_12)],
     products: [
         .library(name: "FolderOrganizerLib", targets:["FolderOrganizerLib"]),
-        .executable(name: "FolderOrganizer", targets: ["FolderOrganizer"])
+        .executable(name: "folder-organizer", targets: ["folder-organizer"])
     ],
     
     dependencies: [
@@ -24,10 +24,10 @@ let package = Package(
                     name: "ArgumentParser", package: "swift-argument-parser")
                 ]),
         .executableTarget(
-            name: "FolderOrganizer",
+            name: "folder-organizer",
             dependencies: ["FolderOrganizerLib"]),
         .testTarget(
             name: "FolderOrganizerTests",
-            dependencies: ["FolderOrganizer"]),
+            dependencies: ["FolderOrganizerLib"]),
     ]
 )

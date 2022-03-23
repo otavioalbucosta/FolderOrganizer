@@ -66,12 +66,17 @@ import ArgumentParser
                         })
                                                      
                                 for url in filter {
-                                    if !fmananger.contentsEqual(atPath: url.path, andPath: commonpath.appendingPathComponent(key).appendingPathComponent(url.lastPathComponent).path){ continue }
+                                    if fmananger.contentsEqual(atPath: url.path, andPath: commonpath.appendingPathComponent(key).appendingPathComponent(url.lastPathComponent).path){
+                                        print("This file exists on both folders, it will not be moved")
+                                        
+                                        continue }
                                     try fmananger.createDirectory(at: commonpath.appendingPathComponent(key), withIntermediateDirectories: true, attributes: nil)
                                     try fmananger.moveItem(at: url , to: commonpath.appendingPathComponent(key).appendingPathComponent(url.lastPathComponent))
+                                    print("File \(url.lastPathComponent) moved to \(commonpath.appendingPathComponent(key))")
                             }
                     }
                 }
+                print("Finished")
             }
         }
     }
