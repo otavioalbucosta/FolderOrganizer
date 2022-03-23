@@ -1,0 +1,26 @@
+{
+  "Movies" : [
+    "mp4",
+    "mov",
+    "avi"
+  ],
+  "Documents" : [
+    "pdf",
+    "txt",
+    "docx",
+    "doc",
+    "paper"
+  ],
+  "Pictures" : [
+    "jpeg",
+    "jpg",
+    "png",
+    "gif",
+    "svg"
+  ],
+  "Music" : [
+    "mp3",
+    "ogg",
+    "wav"
+  ]
+}
