@@ -1,5 +1,4 @@
-# FolderOrganizer
-
+# FolderOrganize
 A simple way of organizing your Finder Folders.
 Currently wonking on MacOS 10.12 and above.
 
@@ -12,3 +11,8 @@ There are two ways of installing FolderOrganizing
 5. Open the terminal and run `folder-organizer -h`
 
 ## Usage
+The common way to use is: 
+```bash
+folder-organizer <subcommand>
+```
+Actually there are three commands: 
