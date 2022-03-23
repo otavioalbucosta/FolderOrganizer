@@ -2,8 +2,8 @@ import ArgumentParser
 import Foundation
 import FolderOrganizerLib
 
-    struct Main: ParsableCommand {
-        static var configuration: CommandConfiguration{
+    public struct Main: ParsableCommand {
+        public static var configuration: CommandConfiguration{
             .init(
                 commandName: "folder-organizer",
                 abstract: "Simple CLI to organize files by extension",
@@ -15,6 +15,9 @@ import FolderOrganizerLib
                     
                 ]
             )
+        }
+        public init(){
+            
         }
     }
 
