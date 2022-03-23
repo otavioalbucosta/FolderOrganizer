@@ -67,6 +67,7 @@ import ArgumentParser
                                                      
                                 for url in filter {
                                     if !fmananger.contentsEqual(atPath: url.path, andPath: commonpath.appendingPathComponent(key).appendingPathComponent(url.lastPathComponent).path){ continue }
+                                    try fmananger.createDirectory(at: commonpath.appendingPathComponent(key), withIntermediateDirectories: true, attributes: nil)
                                     try fmananger.moveItem(at: url , to: commonpath.appendingPathComponent(key).appendingPathComponent(url.lastPathComponent))
                             }
                     }
