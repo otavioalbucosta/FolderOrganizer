@@ -72,7 +72,7 @@ import ArgumentParser
                                         continue }
                                     try fmananger.createDirectory(at: commonpath.appendingPathComponent(key), withIntermediateDirectories: true, attributes: nil)
                                     try fmananger.moveItem(at: url , to: commonpath.appendingPathComponent(key).appendingPathComponent(url.lastPathComponent))
-                                    print("File \(url.lastPathComponent) moved to \(commonpath.appendingPathComponent(key))")
+                                    print("File \(url.lastPathComponent) moved to \(commonpath.appendingPathComponent(key).path)")
                             }
                     }
                 }
