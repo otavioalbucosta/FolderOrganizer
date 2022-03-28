@@ -18,7 +18,7 @@ folder-organizer <subcommand>
 
 Currently there are three commands: 
 
-####* organize 
+#### *organize 
 
 Organizes the folder using a JSON config file as pattern. The program already has a presetted pattern as
 showed below:
@@ -30,4 +30,9 @@ showed below:
   "Music" : ["mp3", "ogg", "wav"]
 }
 ```
-Using this config file as pattern, the `organize` command moves files(values) to their respective folder(key) by format. If the folder has the same file on both folders, it won't be moved.
+Using this config file as pattern, the `organize` command moves files to their respective folder(key) by format(values). If the folder has the same file on both folders, it won't be moved.
+
+#### *manage-format
+
+
+
