@@ -62,7 +62,7 @@ import ArgumentParser
                     for (key, _) in configs{
                         if key.lowercased() == foldername.lowercased(){
                             configs.removeValue(forKey: key)
-                            print("pasta \(key) removida")
+                            print("Folder \(key) removed.")
                             try saveJSON(JSONObject: configs, filename: "config.json", path: configURL)
                             return
                         }
