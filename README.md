@@ -4,11 +4,20 @@ Currently wonking on MacOS 10.12 and above.
 
 ## Installation
 There are two ways of installing FolderOrganizing
+
+### Cloning the repo
+
 1. Clone the repository
 2. Build the package with `swift build -c release`
 3. Go to: `FolderOrganizer/.build/release`
 4. Put the executable `folder-organizer` on `usr/local/bin`
 5. Open the terminal and run `folder-organizer -h`
+
+### Using Homebrew:
+
+1. run on terminal: `brew tap otavioalbucosta/FolderOrganizer`
+2. run: `brew install FolderOrganizer`
+3. Test the installation running `folder-organizer -h`
 
 ## Usage:
 The common way to use is: 
