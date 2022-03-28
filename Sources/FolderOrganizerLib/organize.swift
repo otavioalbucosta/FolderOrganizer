@@ -49,7 +49,7 @@ import ArgumentParser
                 folderpath = URL(fileURLWithPath: path)
                 
                 if try !folderpath.resourceValues(forKeys: [.isDirectoryKey]).isDirectory! {
-                    folderpath = folderpath.deletingLastPathComponent()
+                    print("Your path is not a folder path, please try again.")
                 }
                 
             } else{
