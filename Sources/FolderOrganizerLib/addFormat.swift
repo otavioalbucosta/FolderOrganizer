@@ -44,13 +44,14 @@ import ArgumentParser
             
             
             if var configs = config {
+                print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
                 for (key,values) in configs{
                     print("\(key) : ", terminator: "")
                     for value in values {
                         print("\(value)", terminator: " ")
                     }
                     print()
-                    
+                    print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-", terminator: "\n")
                 }
                 print("Write the folder you want to add or remove formats. (if you want a new folder, leave this entry empty and use the command \"folder-organizer manage-folder\"):  ")
                 let res = readLine()
