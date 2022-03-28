@@ -18,8 +18,7 @@ folder-organizer <subcommand>
 
 Currently there are three commands: 
 
-#### *organize 
-
+#### organize 
 Organizes the folder using a JSON config file as pattern. The program already has a presetted pattern as
 showed below:
 ```json
@@ -32,7 +31,23 @@ showed below:
 ```
 Using this config file as pattern, the `organize` command moves files to their respective folder(key) by format(values). If the folder has the same file on both folders, it won't be moved.
 
-#### *manage-format
-
-
-
+#### manage-format
+Edits the file formats on the config file, adding/removing a file format on a selected folder.
+This command will ask first the folder name that you want to edit their designated formats.
+The difference between adding and removing is the format imput. If you want to add a format, type the new format name you want to add. If you want to remove, just type the format name you want to remove.
+Example:
+```bash
+➜  ~ folder-organizer manage-format
+This is a list of available folders and their respective filetypes:
+Pictures : jpeg png gif svg jpg 
+Documents : pdf txt docx doc paper 
+3D Models : 
+Movies : mov avi mp4 
+Music : mp3 ogg wav 
+Write the folder you want to add or remove formats. (if you want a new folder, leave this entry empty and use the command "folder-organizer manage-folder"):  
+Music
+Write the file format you want to add. If you want to remove, write an already existant file formant.
+raw
+Format .raw successful added on Music
+➜  ~  
+```
