@@ -1,4 +1,4 @@
-# FolderOrganize
+# FolderOrganizer
 A simple way of organizing your Finder Folders.
 Currently wonking on MacOS 10.12 and above.
 
