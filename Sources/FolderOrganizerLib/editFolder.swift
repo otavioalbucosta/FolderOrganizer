@@ -21,23 +21,23 @@ import ArgumentParser
         public init() {}
         
         func loadJSON(filename: String, path: URL) throws -> [String:Array<String>]? {
-            let fullpath = path.appendingPathComponent(filename)
-            let data = try Data(contentsOf: fullpath)
+            let fullPath = path.appendingPathComponent(filename)
+            let data = try Data(contentsOf: fullPath)
             let JSONdata = try JSONSerialization.jsonObject(with: data, options: [.mutableLeaves, .mutableContainers]) as? Dictionary<String, [String]>
             return JSONdata as [String: [String]]?
         }
         
         func saveJSON(JSONObject:Any,filename:String, path:URL) throws{
-            let fullpath = path.appendingPathComponent(filename)
+            let fullPath = path.appendingPathComponent(filename)
             let data = try JSONSerialization.data(withJSONObject:JSONObject, options: [.prettyPrinted])
-            try data.write(to: fullpath, options: .atomic)
+            try data.write(to: fullPath, options: .atomic)
         }
         
         public func run() throws {
             try createConfigJSON()
             
-            let fmanager = FileManager.default
-            let homeURL = fmanager.homeDirectoryForCurrentUser
+            let fileManager = FileManager.default
+            let homeURL = fileManager.homeDirectoryForCurrentUser
             let configURL = homeURL.appendingPathComponent("Documents/.FolderOrganizer")
             
             let config = try loadJSON(filename: "config.json", path: configURL)
@@ -56,19 +56,19 @@ import ArgumentParser
                 }
                 
                 print("Write the folder name on your home folder you want to add. If the folder doesn't exist, it will be created on your home user folder. Write the name of \nan existant folder and it will be removed from the configs, but it won't be deleted on Mac.")
-                let foldername = readLine()
-                if foldername == "" {return}
-                if let foldername = foldername {
+                let folderName = readLine()
+                if folderName == "" {return}
+                if let folderName = folderName {
                     for (key, _) in configs{
-                        if key.lowercased() == foldername.lowercased(){
+                        if key.lowercased() == folderName.lowercased(){
                             configs.removeValue(forKey: key)
                             print("Folder \(key) removed.")
                             try saveJSON(JSONObject: configs, filename: "config.json", path: configURL)
                             return
                         }
                     }
-                    try fmanager.createDirectory(at: homeURL.appendingPathComponent(foldername.capitalized, isDirectory: true), withIntermediateDirectories: true, attributes: nil)
-                    configs[foldername] = []
+                    try fileManager.createDirectory(at: homeURL.appendingPathComponent(folderName.capitalized, isDirectory: true), withIntermediateDirectories: true, attributes: nil)
+                    configs[folderName] = []
                     try saveJSON(JSONObject:configs, filename: "config.json", path: configURL)
                     print("Folder successfully added. Now you can add formats to that folder with \"folder-organizer manage-format\" command")
                     

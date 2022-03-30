@@ -29,8 +29,8 @@ import ArgumentParser
         }
         
         func loadJSON(filename: String, path: URL) throws -> [String:Array<String>]? {
-            let fullpath = path.appendingPathComponent(filename)
-            let data = try Data(contentsOf: fullpath)
+            let fullPath = path.appendingPathComponent(filename)
+            let data = try Data(contentsOf: fullPath)
             let JSONdata = try JSONSerialization.jsonObject(with: data, options: [.mutableLeaves, .mutableContainers]) as? Dictionary<String, [String]>
             return JSONdata as [String: [String]]?
         }
@@ -38,26 +38,26 @@ import ArgumentParser
         public func run() throws {
             try createConfigJSON()
             
-            let fmananger = FileManager.default
-            let commonpath = fmananger.homeDirectoryForCurrentUser
+            let fileManager = FileManager.default
+            let commonPath = fileManager.homeDirectoryForCurrentUser
 
-            let configpath = commonpath.appendingPathComponent("Documents/.FolderOrganizer")
+            let configPath = commonPath.appendingPathComponent("Documents/.FolderOrganizer")
             
-            let config = try loadJSON(filename: "config.json", path: configpath)
-            var folderpath: URL
+            let config = try loadJSON(filename: "config.json", path: configPath)
+            var folderPath: URL
             if let path = folder {
-                folderpath = URL(fileURLWithPath: path)
+                folderPath = URL(fileURLWithPath: path)
                 
-                if try !folderpath.resourceValues(forKeys: [.isDirectoryKey]).isDirectory! {
+                if try !folderPath.resourceValues(forKeys: [.isDirectoryKey]).isDirectory! {
                     print("Your path is not a folder path, please try again.")
                 }
                 
             } else{
-                folderpath = fmananger.urls(for: .downloadsDirectory, in: .userDomainMask)[0]
+                folderPath = fileManager.urls(for: .downloadsDirectory, in: .userDomainMask)[0]
             }
             
             if let conf = config {
-                let contents = try fmananger.contentsOfDirectory(at: folderpath, includingPropertiesForKeys: nil, options: [.skipsSubdirectoryDescendants, .skipsHiddenFiles])
+                let contents = try fileManager.contentsOfDirectory(at: folderPath, includingPropertiesForKeys: nil, options: [.skipsSubdirectoryDescendants, .skipsHiddenFiles])
                 for (key, value) in conf{
                     for filetype in value {
                         let filter = try contents.filter({(path: URL) throws -> Bool in
@@ -66,13 +66,13 @@ import ArgumentParser
                         })
                                                      
                                 for url in filter {
-                                    if fmananger.contentsEqual(atPath: url.path, andPath: commonpath.appendingPathComponent(key).appendingPathComponent(url.lastPathComponent).path){
+                                    if fileManager.contentsEqual(atPath: url.path, andPath: commonPath.appendingPathComponent(key).appendingPathComponent(url.lastPathComponent).path){
                                         print("This file exists on both folders, it will not be moved")
                                         
                                         continue }
-                                    try fmananger.createDirectory(at: commonpath.appendingPathComponent(key), withIntermediateDirectories: true, attributes: nil)
-                                    try fmananger.moveItem(at: url , to: commonpath.appendingPathComponent(key).appendingPathComponent(url.lastPathComponent))
-                                    print("File \(url.lastPathComponent) moved to \(commonpath.appendingPathComponent(key).path)")
+                                    try fileManager.createDirectory(at: commonPath.appendingPathComponent(key), withIntermediateDirectories: true, attributes: nil)
+                                    try fileManager.moveItem(at: url , to: commonPath.appendingPathComponent(key).appendingPathComponent(url.lastPathComponent))
+                                    print("File \(url.lastPathComponent) moved to \(commonPath.appendingPathComponent(key).path)")
                             }
                     }
                 }

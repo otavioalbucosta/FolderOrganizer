@@ -8,11 +8,11 @@
 import Foundation
 
 public func createConfigJSON() throws{
-    let fmanager = FileManager.default
+    let fileManager = FileManager.default
 
-    let configpath = fmanager.homeDirectoryForCurrentUser.appendingPathComponent("Documents/.FolderOrganizer/config.json")
-    if !fmanager.fileExists(atPath: configpath.path){
-        try fmanager.createDirectory(at: configpath.deletingLastPathComponent(), withIntermediateDirectories: true, attributes: nil)
+    let configPath = fileManager.homeDirectoryForCurrentUser.appendingPathComponent("Documents/.FolderOrganizer/config.json")
+    if !fileManager.fileExists(atPath: configPath.path){
+        try fileManager.createDirectory(at: configPath.deletingLastPathComponent(), withIntermediateDirectories: true, attributes: nil)
         let config: [String: [String]] = [
             "Documents": ["pdf","txt","docx","doc","paper"],
             "Movies": ["mp4","mov","avi"],
@@ -20,7 +20,7 @@ public func createConfigJSON() throws{
             "Music": ["mp3","ogg","wav"]
         ]
         let data = try JSONSerialization.data(withJSONObject: config, options: [.prettyPrinted])
-        try data.write(to: configpath, options: [.atomic])
+        try data.write(to: configPath, options: [.atomic])
         
     }
     
